@@ -2,7 +2,7 @@
 candidatos = [
 ['candidato 1', 'e5_t10_p9_s8'],
 ['candidato 2', 'e10_t7_p7_s8'],
-['candidato 3', 'e8_t5_p7_s9'],
+['candidato 3', 'e8_t5_p4_s9'],
 ['candidato 4', 'e2_t2_p2_s1'],
 ['candidato 5', 'e10_t10_p8_s9']
 ]
@@ -28,8 +28,8 @@ soft_skills = int(input(f'''
 # FUNÇÃO QUE BUSCA O CANDIDATO DE ACORDO COM OS CRITÉRIOS DIGITADOS
 def busca_candidato(candidatos, nota_minima_entrevista, nota_minima_teste_teorico, nota_minima_teste_pratico, nota_minima_soft_skills):
     candidatos_compativeis = []
-    for candidato in candidatos:
-        notas = candidato[1].split('_')  # DIVISÃO DA STRING EM PARTES PARA ESTRAÇÃO
+    for candidato, resultado in candidatos:
+        notas = resultado.split('_')  # DIVISÃO DA STRING EM PARTES PARA ESTRAÇÃO
         nota_entrevista = int(notas[0][1:])  
         nota_teste_teorico = int(notas[1][1:])  
         nota_teste_pratico = int(notas[2][1:])  
@@ -41,7 +41,8 @@ def busca_candidato(candidatos, nota_minima_entrevista, nota_minima_teste_teoric
             candidatos_compativeis.append(candidato)
     return candidatos_compativeis
 
-candidatos_encontrados = busca_candidato(candidatos, entrevista, teste_teorico, teste_pratico, soft_skills)
+# INVOCAÇÃO DA FUNÇAO
+candidatos_encontrados = busca_candidato(candidatos, entrevista, teste_teorico, teste_pratico, soft_skills) #LISTA
 
 # EXIBIÇÃO DO RESULTADO
 if candidatos_encontrados:
